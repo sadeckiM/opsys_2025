@@ -1,6 +1,5 @@
 # Systemy operacyjne
 ## Michal Sadecki AiR 2023
-### Pisane w C 
 
 # Opis plików 
 Lista 1: so1.txt
@@ -24,6 +23,7 @@ Lista 9: Semafory
 Dodatkowo w trakcie sesji nie dawał dodatkowych list, ani zadań do oddania, tylko pisaliśmy razem z nim, tj.
 - Threads
 - Client
+- Server
 
 ### Uwagi
 - Nie ma wszystkich zadań rozwiązanych (nie chciało mi się).
