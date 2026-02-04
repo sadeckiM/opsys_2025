@@ -1,0 +1,21 @@
+1. findmnt ; lsblk
+typ: ext4, dysk sda, partycja sda1
+
+2. findmnt
+sysfs, security, tracefs, tmpfs, ...
+
+3. ln -s plik.txt dowiazanie ; ls -li
+
+4. Nie ma wpływu.
+5. Nie mają znaczenia.
+6. Po wykonaniu cd na link symboliczny do katalogu przechodzimy do katalogu o nazwie takiej jak link symboliczny, gdzie utworzone pliki znajdują się w katalogu, do którego link prowadzi. Zrobienie cd .. przenosi do katalogu, gdzie link symboliczny się znajduje.
+
+Dowiązanie może wskazywać na inne. Można utworzyć dowiązanie do nieistniejącego pliku. Nie można utworzyć pętli dowiązań.
+
+dd if=/dev/zero of=fs.ing bs=1024 count=10000
+mkfs.ext2 fs.ing
+debugfs
+
+sudo mount -o loop fs.ing /mnt
+
+7. Licznik dowiązań zwiększył się. Nie można utworzyć linku symbolicznego. Tworzenie dowiązań twardych dla katalogów jest zabronione, nawet poprzez sudo. Twarde dowiązania mogą być stworzone tylko do plików z tego samego systemu plików.

@@ -1,0 +1,42 @@
+15 i 20 - trzeba znać składnię pliku passwd:
+Ten plik przechowuje informacje o wszystkich użytkownikach systemu i ich procesach. Dzieli się go na siedzem kolumn oddzielonych ;
+    1. Nazwa użytkownika
+    2. Informacja do uwierzytelniania hasła.
+    3. User ID - unikalne dla każdego użytkownika
+    4. Group ID
+    5. Informacje o użytkowniku
+    6. Sciezka home uzytkownika
+    7. Powloka, jakiej uzywa uzytkownik
+
+
+1. cp /etc/passwd ~
+2. more -n5 ~/passwd
+2a. less ~/passwd |head -n 5
+3. find ~ -type f -exec head -n 5 {} \;
+4. cat -n ~/passwd | head -5 | tail -3
+5. cat -n ~/passwd | tail -7 | head -3
+6. cat plik |tr " " "\n" >> plik
+7. cat ~/passwd | tr "\n" " "
+8. find /etc 2> /dev/null |wc -l
+9. head -n 3 ~/passwd |wc -c
+10. ls |tr '[:lower:]' '[:upper:]'
+11. ls -l |cut -f1,6,9 -d" "
+12. ls -l |cut -f1,6,9 -d" " |sort -n
+13. ls -l |sort +4 |head -4 |tail -3 |awk '{print $8}' |sort
+14. cat ~/passwd |sort -nr -t":" +3
+15. awk -F: '{if ($7 != "/bin/bash") {print $1}}' ~/passwd
+16. ls -l /usr/bin |sort -n -k5 |tail -5|head -5
+17. Błędy trafiają do próżni i nie wyświetlają się na stdout.
+18. find /etc -maxdepth 1 -type f -size +2000c > out.txt 2> err.txt
+19. find /etc -name "*.conf"|wc -l
+20. cat ~/passwd |awk -F: '{print $1}' > users.txt
+
+Praktyczne:
+1. tail -10 /var/log/syslog
+2. ls -l |grep '^d' |sort -n +4 |tail -5
+3. find /var/log -maxdepth 1 -name "*.log" -exec du -ch {} + |awk '{print $1}' |tail -1
+
+Zaawansowane:
+1. ps aux |awk '{if($3 > 1.0) {print $11}}'
+2.
+3. history 0 |awk '{$1=""; print $0}' |sort |uniq -dc |sort -n |head -10

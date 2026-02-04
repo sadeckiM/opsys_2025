@@ -1,0 +1,121 @@
+Regex:
+. dowolny jeden znak
+\ uwzględnia znaki specjalne, np. \. \*
+/ separator ścieżek
+[] zbiór znaków
+[^] negacja znaków
+* 0 lub więcej wystąpień
++ 1 lub więcej wystąpień
+? 0 lub 1 wystąpień
+{n,m} zakres od n do m wystąpień
+| lub
+{n} dokładnie n
+$ - koniec dopasowania
+^ początek dopasowania
+
+1. pwd, cd ~, cd, cd ..
+2. ls: -l daje wiecej informacji, -a wyswietla ukryte pliki (zaczynajace sie od .), -h wyswietla rozmiar plikow w kB, -d wyświetla informacje tylko o danym katalogu, przydatne z -l
+
+Kolumny:
+1) Informacje od dostępach:
+    1. Rodzaj pliku: d - directory, - zwykły plik, c - character device, b - block device, l - symlink, p - potok, s - socket, ? - inne
+    c - klawiatura, terminal
+    b - dane przesyłane w blokach, np. dyski
+    s - gniazdo sieciowe/komunikacyjne
+    2. Uprawnienia właściciela, grupy, gościa: r - read, w - write, x - execute
+
+    Wartości uprawnień:
+    4 = odczyt
+    2 = zapis
+    1 = execute
+
+2) Liczba aliasów do pliku.
+3) Nazwa właściciela
+4) Nazwa grupy
+5) Rozmiar pliku
+6) Data modyfikacji
+7) Nazwa pliku
+
+3. W dev: glownie pliki character block, w proc: glownie pliki directory, w sys: glownie pliki directory.
+
+4. Używać taba.
+5. ls -a ~ |grep Do
+6. find ~ -name "*.txt"
+7. find /usr/bin -maxdepth 0 -iname "[a-z][0-9]"
+8. find /usr/bin -maxdepth 0 -name "???"
+
+6a. ls ~ |grep ".txt"
+7a. ls /usr/bin |grep -E "[^0-9]$"
+8a. ls /usr/bin |grep -E "^...$"
+
+-E użyć regexa
+
+9. cd /tmp && mkdir 278317
+10. mkdir -p projekt/{src,docs,bin}
+11. touch plik{1..5}.txt test{1..3}.c
+12. cp -r projekt project_backup
+13. tree
+14. rm -rfi projekt_backup
+
+15. which gcc && which python3 && which nano
+    whereis gcc && whereis python3 && whereis nano
+    whatis gcc && whatis python3 && whatis nano
+16. find . -mmin -60
+    - mniej niż
+    + więcej niż
+    60 dokładnie 60
+    -m opcja ustalenia, czy mniej czy więcej razy
+17. find /usr -type f -name "*mozilla*"
+18. find /usr/bin -type f -size +10c -size -100c
+19. find /usr/bin -type f -size +10c -size -100c -exec ls -l {} +
+    {} - dany plik
+    + wykonuje dla wszystkich plików jednocześnie
+    \; wykonuje dla wszystkich plików osobno
+20. find /usr/bin -type f -size +10c -size -100c -exec cp -r {} projekt/bin \;
+
+21. touch hello.sh && echo "echo \"Hello $USER\" >> hello.sh && ./hello.
+22. Brak permisji do wykonania. Trzeba chmod +x hello.sh
+23. Osoby, którym przyznaje się dostępy:
+    u - wlaściciel
+    g - użytkownik grupy
+    o - inni
+    a - wszyscy
+    Operacje:
+    - zabierz prawo
+    + dodaj prawo
+    = przyznaj prawo
+chmod g+w hello.sh
+24. chmod u-w hello.sh
+25. chmod u-r hello.sh
+26. chmod o-rwx hello.sh
+27. chmod a+x hello.sh
+28. chmod 742 hello.sh
+29. mkdir publiczny && chmod 777 publiczny
+    mkdir prywatny && chmod 700 publiczny
+30. mkdir plik && chmod 444 plik
+    Brak uprawnień do edycji oraz usunięcia.
+
+31. tar -czf backup_$(date +%Y%m%d).tar.gz ~/katalog
+    -c tworzenie archiwum
+    -z kompresja archiwum
+    -f podanie nazwy
+    backup_20241011.tar.gz - nazwa archiwum
+    %Y - rok
+    %m - miesiac
+    %d - dzien
+    $() - wykonanie komendy w ()
+    + wyswietl datę
+    date +FORMAT
+    date [data] - ustawia datę na [data]
+    Inne:
+    %H - godzina
+    %M - minuta
+    %S - sekunda
+32. watch -n 2 'ls -la'
+    watch - wykonuje komendę co pewien okres
+    -n 2 interwał [s]
+    '' - komenda
+
+    Inne:
+    -d uwidacznij zmiany
+    -t bez nagłówka
